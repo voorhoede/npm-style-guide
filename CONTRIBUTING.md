@@ -16,19 +16,12 @@ Use short and descriptive rule names as 2nd level heading:
   
 Optionally add an short summary for the rule.
 
-```markdown
-RiotJS allows any type of JavaScript expression as inline expression (`{ expression }`).
-```
-
 Describe **why** the rule exists. What purpose does it serve?
 
 ```markdown
 ### Why?
 
-Keep inline expressions simple because:
-
-* complex inline expressions are hard to read
-* inline expressions cant be reused
+With nvm you can have multiple different versions available and switch to the one that suits better your project.
 ```
 
 Describe **how** (and how not) to apply the rule.
@@ -36,25 +29,12 @@ Describe **how** (and how not) to apply the rule.
 ```markdown
 ### How?
 
-If an expression becomes complex, move it to a tag property or method.
+To install or update nvm, you can use the install script using cURL
 ```
 
 When using code snippets:
-* use <code>```html</code> for improved syntax highlighting of Riot tag elements. 
-* use <code>```javascript</code> for improved syntax highlighting when script only.
 * use `<!-- recommended -->` and `/* recommended */` or `<!-- avoid -->` and `/* avoid */` at the start of the snippet to indicate if it's a good or bad practice.
 
-For example:
-
-```html
-<!-- recommended -->
-<datetime>{ this.timestamp() }</datetime>
-
-<!-- avoid -->
-<datetime>
-    { ((new Date()).getUTCMonth()+1) + ' ' + (new Date()).getUTCFullYear() }
-</datetime>
-```
 
 Add a [↑ back to Table of Contents](README.md#table-of-contents) link at the end of each rule, so the reader can easily navigate back:
 
