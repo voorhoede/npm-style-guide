@@ -16,6 +16,7 @@ This guide provides a set of rules to better manage, test and build your NPM mod
 * [Use nvm to manage node versions](#use-nvm-to-manage-node-versions)
 * [Configure your npm personal info](#configure-your-npm-personal-info)
 * [Use `save exact` option](#use-save-exact-option)
+* [Avoid relying on globally installed packages](#avoid-relying-on-globally-installed-packages)
 
 
 ## Use nvm to manage node versions 
@@ -75,5 +76,17 @@ By default, installing a package with the `—save` option, npm saves the packag
 ```bash
 npm config set save-exact
 ```
+
+[↑ back to Table of Contents](#table-of-contents)
+
+## Avoid relying on globally installed packages
+
+### Why?
+
+You can't control and should not depend on the user to install a global depency just because of your project/module.
+
+### How?
+
+Run your tasks with [`npm scripts`](https://docs.npmjs.com/misc/scripts) when using `npm scripts` and having the dependency locally defined it just works.
 
 [↑ back to Table of Contents](#table-of-contents)
