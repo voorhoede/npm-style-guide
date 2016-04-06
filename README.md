@@ -16,6 +16,7 @@ This guide provides a set of rules to better manage, test and build your [NPM](h
 * [Use nvm to manage node versions](#use-nvm-to-manage-node-versions)
 * [Configure your npm personal info](#configure-your-npm-personal-info)
 * [Use `save exact` option](#use-save-exact-option)
+* [Use npm modules for system tasks](#use-npm-modules-for-system-tasks)
 
 
 ## Use nvm to manage node versions 
@@ -78,5 +79,17 @@ By default, installing a package with the `--save` or `--save-dev` option, npm s
 ```bash
 npm config set save-exact
 ```
+
+[↑ back to Table of Contents](#table-of-contents)
+
+## Use npm modules for system tasks
+
+### Why?
+
+When you use system specific commands like `rm -rf` or `&&`, you are locking your tasks to your current system. If you want to make your scripts work everwhere think about about windows developers also.
+
+### How?
+
+Use npm modules with node that mimic the same tasks but are system agnostic. For the examples above your could use [`rimraf`](https://www.npmjs.com/package/rimraf) for deleting files and [`npm-run-all`](https://www.npmjs.com/package/npm-run-all) to run tasks in parallel.
 
 [↑ back to Table of Contents](#table-of-contents)
