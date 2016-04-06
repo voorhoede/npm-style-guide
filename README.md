@@ -16,6 +16,7 @@ This guide provides a set of rules to better manage, test and build your NPM mod
 * [Use nvm to manage node versions](#use-nvm-to-manage-node-versions)
 * [Configure your npm personal info](#configure-your-npm-personal-info)
 * [Use `save exact` option](#use-save-exact-option)
+* [Write atomic tasks](#write-atomic-tasks)
 
 
 ## Use nvm to manage node versions 
@@ -75,5 +76,17 @@ By default, installing a package with the `—save` option, npm saves the packag
 ```bash
 npm config set save-exact
 ```
+
+[↑ back to Table of Contents](#table-of-contents)
+
+## Write atomic tasks
+
+### Why?
+
+Convoluted tasks are harder to debug and understand. 
+
+### How?
+
+Each task should be only responsible for one function. If a specific task requires some extra complexity like cleaning a directory and then generating icons, just separate the clean task from generating icons. 
 
 [↑ back to Table of Contents](#table-of-contents)
