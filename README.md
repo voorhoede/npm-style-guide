@@ -91,14 +91,14 @@ NPM first tries globally installed modules before looking for local ones. Global
 ### Why?
 
 * Locally installed modules are custom and specific for the project.
-* Locally installed modules are directly accessible via `npm scripts`.
+* Locally installed modules are directly accessible via **npm scripts**.
 
 
 ### How?
 
 ```bash
-# recommended
-npm install grunt-cli grunt
+# recommended: install locally
+npm install --save-dev grunt-cli grunt
 ```
 and use in `package.json`:
 ```json
@@ -107,11 +107,11 @@ and use in `package.json`:
 }
 ```
 ```bash
-# avoid
+# avoid: don't install modules globally
 npm install -g grunt-cli grunt
 ```
 
-More about [`npm scripts`](https://docs.npmjs.com/misc/scripts).
+More about [**npm scripts**](https://docs.npmjs.com/misc/scripts).
 
 [↑ back to Table of Contents](#table-of-contents)
 
