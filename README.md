@@ -16,6 +16,7 @@ This guide provides a set of rules to better manage, test and build your [NPM](h
 * [Use nvm to manage node versions](#use-nvm-to-manage-node-versions)
 * [Configure your npm personal info](#configure-your-npm-personal-info)
 * [Use `save exact` option](#use-save-exact-option)
+* [Avoid installing modules globally](#avoid-installing-modules-globally)
 * [Write atomic tasks](#write-atomic-tasks)
 * [Use npm modules for system tasks](#use-npm-modules-for-system-tasks)
 
@@ -80,6 +81,37 @@ By default, installing a package with the `--save` or `--save-dev` option, npm s
 ```bash
 npm config set save-exact
 ```
+
+[↑ back to Table of Contents](#table-of-contents)
+
+## Avoid installing modules globally
+
+NPM first tries globally installed modules before looking for local ones. Globally installed modules are shared between projects and might not match the required version for the project.
+
+### Why?
+
+* Locally installed modules are custom and specific for the project.
+* Locally installed modules are directly accessible via `npm scripts`.
+
+
+### How?
+
+```bash
+# recommended
+npm install grunt-cli grunt
+```
+and use in `package.json`:
+```json
+"scripts": {
+  "icons": "grunt grunticons"
+}
+```
+```bash
+# avoid
+npm install -g grunt-cli grunt
+```
+
+More about [`npm scripts`](https://docs.npmjs.com/misc/scripts).
 
 [↑ back to Table of Contents](#table-of-contents)
 
