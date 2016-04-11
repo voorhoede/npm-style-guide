@@ -89,8 +89,8 @@ Each task should be only responsible for one function.
 
 ### Why?
 
-    Atomic tasks are easy to read and understand
-    Atomic tasks are easy to reuse.
+* Atomic tasks are easy to read and understand
+* Atomic tasks are easy to reuse.
 
 ### How?
 
