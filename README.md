@@ -86,7 +86,7 @@ npm config set save-exact
 
 ### Why?
 
-When you use system specific commands like `rm -rf` or `&&`, you are locking your tasks to your current system. If you want to make your scripts work everwhere think about about windows developers also.
+When you use system specific commands like `rm -rf` or `&&`, you are locking your tasks to your current system. If you want to make your scripts work everwhere think about windows developers also.
 
 ### How?
 
