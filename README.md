@@ -35,6 +35,9 @@ To install or update nvm, you can use the install script using cURL:
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.0/install.sh | bash
 ```
 
+For Windows check [nvm for windows](https://github.com/coreybutler/nvm-windows).
+
+
 If everything goes well, you can now install a specific node version.
 
 ```bash
