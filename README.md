@@ -144,6 +144,7 @@ Use npm modules with node that mimic the same tasks but are system agnostic. Som
 * create directory (`mkdir` / `mkdir -p`) -> [`mkdirp`](https://www.npmjs.com/package/mkdirp)
 * remove files and directories (`rm ...`) -> [`rimraf`](https://www.npmjs.com/package/rimraf)
 * copy files (`cp ...`) -> [`ncp`](https://www.npmjs.com/package/ncp)
-* run multiple tasks (`... && ...`) -> [`npm-run-all`](https://www.npmjs.com/package/npm-run-all)
+* run multiple tasks in sequence (`... && ...`) or in parallel (`... & ...`) -> [`npm-run-all`](https://www.npmjs.com/package/npm-run-all)
+* set environment variable (`ENV_VAR = ...`) -> [`cross-env`](https://www.npmjs.com/package/cross-env)
 
 [↑ back to Table of Contents](#table-of-contents)
