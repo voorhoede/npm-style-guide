@@ -18,6 +18,7 @@ This guide provides a set of rules to better manage, test and build your [NPM](h
 * [Use `save exact` option](#use-save-exact-option)
 * [Avoid installing modules globally](#avoid-installing-modules-globally)
 * [Write atomic tasks](#write-atomic-tasks)
+* [Use standard script names](#use-standard-script-names)
 * [Use npm modules for system tasks](#use-npm-modules-for-system-tasks)
 
 
@@ -130,6 +131,19 @@ Each task should be only responsible for one action.
 ### How?
 
 Separate each step of the task to an individual task. For example a "generate icon" task can be split into atomic tasks like "clean directory", "optimize SVGs", "generate PNGs" and "generate data-uris for SVGs".
+
+
+[↑ back to Table of Contents](#table-of-contents)
+
+## Use standard script names
+
+### Why?
+
+Makes it easier to any developer if the names of the tasks are consistent between projects.
+
+### How?
+
+Use names like `build`, `test`, `start` and `watch`.
 
 
 [↑ back to Table of Contents](#table-of-contents)
