@@ -128,12 +128,6 @@ Each task should be only responsible for one function.
 
 Separate each step of the task to an individual task. For example a "generate icon" task can be split into atomic tasks like "clean directory", "optimize SVGs", "generate PNGs" and "generate data-uris for SVGs".
 
-    generate icon
-        clean directory
-        optimize svg
-        generate png
-        genrate data-uri for svg
-
 
 [↑ back to Table of Contents](#table-of-contents)
 
