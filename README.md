@@ -147,6 +147,7 @@ Bundle your tasks with a prefix so you can execute them all at once.
 
 ### How?
 
+**package.json**:
 ``` js
 scripts: {
   "build:js": "browserify",
