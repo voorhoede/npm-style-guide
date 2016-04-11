@@ -81,12 +81,23 @@ npm config set save-exact
 
 ## Write atomic tasks
 
+Each task should be only responsible for one function. 
+
 ### Why?
 
-Convoluted tasks are harder to debug and understand. 
+    Atomic tasks are easy to read and understand
+    Atomic tasks are easy to reuse.
 
 ### How?
 
-Each task should be only responsible for one function. If a specific task requires some extra complexity like cleaning a directory and then generating icons, just separate the clean task from generating icons. 
+Separate each step of the task to an individual task, e.g:
+
+    generate icon
+        clean directory
+        optimize svg
+        generate png
+        genrate data-uri for svg
+
+
 
 [↑ back to Table of Contents](#table-of-contents)
