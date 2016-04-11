@@ -147,15 +147,22 @@ Bundle your tasks with a prefix so you can execute them all at once.
 
 ### How?
 
-**package.json**:
+`package.json`:
 ``` js
+/* recommended */
 scripts: {
   "build:js": "browserify",
   "build:css": "postcss -u"
 }
+
+/* avoid */
+scripts: {
+  "bundle_js": "browserify",
+  "minify_css": "postcss -u"
+}
 ```
 
-**usage**:
+usage:
 ``` bash
 npm-run-all build:*
 ```
