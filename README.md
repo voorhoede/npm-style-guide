@@ -90,8 +90,8 @@ NPM first tries globally installed modules before looking for local ones. Global
 
 ### Why?
 
-    Locally installed modules are custom and specific for the project.
-    Locally installed modules are directly accessible via `npm scripts`.
+* Locally installed modules are custom and specific for the project.
+* Locally installed modules are directly accessible via `npm scripts`.
 
 
 ### How?
