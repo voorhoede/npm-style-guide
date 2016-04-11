@@ -117,11 +117,11 @@ More about [**npm scripts**](https://docs.npmjs.com/misc/scripts).
 
 ## Write atomic tasks
 
-Each task should be only responsible for one function. 
+Each task should be only responsible for one action. 
 
 ### Why?
 
-* Atomic tasks are easy to read and understand
+* Atomic tasks are easy to read and understand.
 * Atomic tasks are easy to reuse.
 
 ### How?
