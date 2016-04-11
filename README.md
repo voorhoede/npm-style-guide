@@ -141,10 +141,15 @@ Separate each step of the task to an individual task. For example a "generate ic
 
 ### Why?
 
-When you use system specific commands like `rm -rf` or `&&`, you are locking your tasks to your current system. If you want to make your scripts work everwhere think about windows developers also.
+When you use system specific commands like `rm -rf` or `&&`, you are locking your tasks to your current operating system. If you want to make your scripts work everwhere think about Windows developers also.
 
 ### How?
 
-Use npm modules with node that mimic the same tasks but are system agnostic. For the examples above your could use [`rimraf`](https://www.npmjs.com/package/rimraf) for deleting files and [`npm-run-all`](https://www.npmjs.com/package/npm-run-all) to run tasks in parallel.
+Use npm modules with node that mimic the same tasks but are system agnostic. Some examples:
+
+* create directory (`mkdir` / `mkdir -p`) -> [`mkdirp`](https://www.npmjs.com/package/mkdirp)
+* remove files and directories (`rm ...`) -> [`rimraf`](https://www.npmjs.com/package/rimraf)
+* copy files (`cp ...`) -> [`ncp`](https://www.npmjs.com/package/ncp)
+* run multiple tasks (`... && ...`) -> [`npm-run-all`](https://www.npmjs.com/package/npm-run-all)
 
 [↑ back to Table of Contents](#table-of-contents)
