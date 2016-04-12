@@ -142,8 +142,8 @@ Bundle your tasks with a prefix so you can execute them all at once.
 ### Why?
 
 * Bundling helps keeping your tasks organized.
-* They are easily executed at once.
-* Your execution command stays they same when you add tasks.
+* Tasks grouped by prefix can be easily executed with one command.
+* Your script API remains unchanged when tasks are added, removed or renamed.
 
 ### How?
 
