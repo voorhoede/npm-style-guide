@@ -18,7 +18,7 @@ This guide provides a set of rules to better manage, test and build your [NPM](h
 * [Use `save exact` option](#use-save-exact-option)
 * [Avoid installing modules globally](#avoid-installing-modules-globally)
 * [Write atomic tasks](#write-atomic-tasks)
-* [Prefix tasks to bundle them](#prefix-tasks-to-bundle-them)
+* [Group related tasks by prefix](#group-related-tasks-by-prefix)
 * [Use npm modules for system tasks](#use-npm-modules-for-system-tasks)
 
 
@@ -135,7 +135,7 @@ Separate each step of the task to an individual task. For example a "generate ic
 
 [↑ back to Table of Contents](#table-of-contents)
 
-## Prefix tasks to bundle them
+## Group related tasks by prefix 
 
 Bundle your tasks with a prefix so you can execute them all at once.
 
