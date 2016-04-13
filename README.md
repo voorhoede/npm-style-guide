@@ -164,9 +164,12 @@ scripts: {
 }
 ```
 
-usage:
+To run all scripts prefixed with `build:` use [npm-run-all](https://www.npmjs.com/package/npm-run-all). If you use taskrunners, see their documentation for implementation details.
+
+Usage:
+
 ``` bash
-npm-run-all build:*
+$ npm-run-all build:*
 ```
 
 [↑ back to Table of Contents](#table-of-contents)
