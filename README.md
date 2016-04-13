@@ -151,14 +151,16 @@ Bundle your tasks with a prefix so you can execute them all at once.
 ``` js
 /* recommended */
 scripts: {
-  "build:js": "browserify",
-  "build:css": "postcss -u"
+	"build:cleanDistDir": "rimraf dist/",
+	"build:optimizeSVG": "svgo --folder svg/",
+	"build:generatePNGFallback": "svg2png svg/*.svg"
 }
 
 /* avoid */
 scripts: {
-  "bundle_js": "browserify",
-  "minify_css": "postcss -u"
+	"cleanDistDir": "rimraf dist/",
+	"optimizeSvg": "svgo --folder svg/ --output dist/svg",
+	"generatePNGFallback": "svg2png svg/*.svg --output dist/png"
 }
 ```
 
