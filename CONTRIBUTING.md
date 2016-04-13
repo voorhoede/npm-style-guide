@@ -35,6 +35,7 @@ To install or update nvm, you can use the install script using cURL
 When using code snippets:
 * use `<!-- recommended -->` and `/* recommended */` or `<!-- avoid -->` and `/* avoid */` at the start of the snippet to indicate if it's a good or bad practice.
 
+When in need refer to npm in lowercase.
 
 Add a [↑ back to Table of Contents](README.md#table-of-contents) link at the end of each rule, so the reader can easily navigate back:
 
