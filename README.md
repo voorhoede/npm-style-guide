@@ -19,6 +19,7 @@ This guide provides a set of rules to better manage, test and build your [npm](h
 * [Avoid installing modules globally](#avoid-installing-modules-globally)
 * [Write atomic tasks](#write-atomic-tasks)
 * [Use npm modules for system tasks](#use-npm-modules-for-system-tasks)
+* [Avoid shorthand command flags](#avoid-shorthand-command-flags)
 
 
 ## Use nvm to manage node versions 
@@ -149,5 +150,31 @@ Use npm modules with node that mimic the same tasks but are system agnostic. Som
 * copy files (`cp ...`) -> [`ncp`](https://www.npmjs.com/package/ncp)
 * run multiple tasks in sequence (`... && ...`) or in parallel (`... & ...`) -> [`npm-run-all`](https://www.npmjs.com/package/npm-run-all)
 * set environment variable (`ENV_VAR = ...`) -> [`cross-env`](https://www.npmjs.com/package/cross-env)
+
+[↑ back to Table of Contents](#table-of-contents)
+
+## Avoid shorthand command flags
+
+npm and npm modules with a command-line interface support different options using fully written out and / or shorthand flags. For instance, instead of `npm install --save-dev` you can use the shorter `npm i -D`. For `npm test` you can use simply `npm t`. But `npm start` is not the same as `npm s`, as that's an alias for `npm search`. So while you can use these shorthands in your daily routine, you should avoid them in scripts and documentation shared with other developers.  
+
+## Why?
+
+* Shorthand flags can only be understood by developers who know the modules and options well.
+* Fully written out command options help in writing self documented scripts.
+* Fully written out command options make scripts more accessible to other developers.
+
+## How?
+
+Always prefer fully written command flags over shorthand. Example using [uglifyjs](https://www.npmjs.com/package/uglify-js):
+
+```bash
+# recommended
+uglify index.js --compress --mangle --reserved '$' --output index.min.js
+```
+
+```bash
+# avoid
+uglifyjs index.js -c -m -r '$' -o index.min.js
+```
 
 [↑ back to Table of Contents](#table-of-contents)
