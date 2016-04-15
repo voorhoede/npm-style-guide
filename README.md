@@ -151,6 +151,7 @@ Bundle your tasks with a prefix so you can execute them all at once.
 ``` js
 /* recommended */
 scripts: {
+    "build": "npm-run-all build:*",
 	"build:cleanDistDir": "rimraf dist/",
 	"build:optimizeSVG": "svgo --folder svg/",
 	"build:generatePNGFallback": "svg2png svg/*.svg"
@@ -158,19 +159,14 @@ scripts: {
 
 /* avoid */
 scripts: {
+    "build": "npm run cleanDistDir && npm run optimizeSvg && npm run generatePNGFallback",
 	"cleanDistDir": "rimraf dist/",
 	"optimizeSvg": "svgo --folder svg/ --output dist/svg",
 	"generatePNGFallback": "svg2png svg/*.svg --output dist/png"
 }
 ```
 
-To run all scripts prefixed with `build:` use [npm-run-all](https://www.npmjs.com/package/npm-run-all). If you use taskrunners, see their documentation for implementation details.
-
-Usage:
-
-``` bash
-$ npm-run-all build:*
-```
+To run all scripts prefixed with `build:` use [npm-run-all](https://www.npmjs.com/package/npm-run-all). A CLI tool to run multiple npm-scripts in parallel or sequential / serial.
 
 [↑ back to Table of Contents](#table-of-contents)
 
