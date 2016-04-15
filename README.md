@@ -16,12 +16,13 @@ This guide provides a set of rules to better manage, test and build your [NPM](h
 * [Use nvm to manage node versions](#use-nvm-to-manage-node-versions)
 * [Configure your npm personal info](#configure-your-npm-personal-info)
 * [Use `save exact` option](#use-save-exact-option)
+* [Specify engines on `package.json`](#specify-engines-on-package.json)
 * [Avoid installing modules globally](#avoid-installing-modules-globally)
 * [Write atomic tasks](#write-atomic-tasks)
 * [Use npm modules for system tasks](#use-npm-modules-for-system-tasks)
 
 
-## Use nvm to manage node versions 
+## Use nvm to manage node versions
 
 ### Why?
 
@@ -44,7 +45,7 @@ If everything goes well, you can now install a specific node version.
 nvm install stable
 nvm install vX.Y.Z
 nvm alias default stable
-``` 
+```
 
 It’s also easy when updating a newer version, copying your existing global modules.
 
@@ -54,7 +55,7 @@ nvm copy-packages <previous-version>
 
 [↑ back to Table of Contents](#table-of-contents)
 
-## Configure your npm personal info 
+## Configure your npm personal info
 
 ### Why?
 
@@ -84,6 +85,25 @@ By default, installing a package with the `--save` or `--save-dev` option, npm s
 ```bash
 npm config set save-exact
 ```
+
+[↑ back to Table of Contents](#table-of-contents)
+
+## Specify engines on `package.json`
+
+### Why?
+
+Specifing minimal engines version for your module warns the user if he is not using a supported version. This is specially important for ensuring npm3 flat tree dependecy on Windows, or es2015 features that your tasks require on node.
+
+### How?
+
+```javascript
+"engines" : {
+  "node" : "5.10.0",
+  "npm" : "3.8.5"
+}
+```
+
+Preventing the user from using your module is also possible with [check-pkg-engines](https://www.npmjs.com/package/check-pkg-engines).
 
 [↑ back to Table of Contents](#table-of-contents)
 
@@ -120,7 +140,7 @@ More about [**npm scripts**](https://docs.npmjs.com/misc/scripts).
 
 ## Write atomic tasks
 
-Each task should be only responsible for one action. 
+Each task should be only responsible for one action.
 
 ### Why?
 
