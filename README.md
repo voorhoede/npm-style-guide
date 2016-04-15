@@ -19,9 +19,10 @@ This guide provides a set of rules to better manage, test and build your [NPM](h
 * [Avoid installing modules globally](#avoid-installing-modules-globally)
 * [Write atomic tasks](#write-atomic-tasks)
 * [Use npm modules for system tasks](#use-npm-modules-for-system-tasks)
+* [Document your script API](#document-your-script-API)
 
 
-## Use nvm to manage node versions 
+## Use nvm to manage node versions
 
 ### Why?
 
@@ -44,7 +45,7 @@ If everything goes well, you can now install a specific node version.
 nvm install stable
 nvm install vX.Y.Z
 nvm alias default stable
-``` 
+```
 
 It’s also easy when updating a newer version, copying your existing global modules.
 
@@ -54,7 +55,7 @@ nvm copy-packages <previous-version>
 
 [↑ back to Table of Contents](#table-of-contents)
 
-## Configure your npm personal info 
+## Configure your npm personal info
 
 ### Why?
 
@@ -120,7 +121,7 @@ More about [**npm scripts**](https://docs.npmjs.com/misc/scripts).
 
 ## Write atomic tasks
 
-Each task should be only responsible for one action. 
+Each task should be only responsible for one action.
 
 ### Why?
 
@@ -138,7 +139,7 @@ Separate each step of the task to an individual task. For example a "generate ic
 
 ### Why?
 
-When you use system specific commands like `rm -rf` or `&&`, you are locking your tasks to your current operating system. If you want to make your scripts work everwhere think about Windows developers also.
+When you use system specific commands like `rm -rf` or `&&`, you are locking your tasks to your current operating system. If you want to make your scripts work everywhere think about Windows developers also.
 
 ### How?
 
@@ -151,3 +152,33 @@ Use npm modules with node that mimic the same tasks but are system agnostic. Som
 * set environment variable (`ENV_VAR = ...`) -> [`cross-env`](https://www.npmjs.com/package/cross-env)
 
 [↑ back to Table of Contents](#table-of-contents)
+
+## Document your script API
+
+### Why?
+
+* Documentation provides developers with a high level overview to the script, without the need to go through all its code. This makes a module more accessible and easier to use.
+
+* Documentation formalises the API.
+
+* README.md is the de facto standard filename for documentation to be read first. Code repository hosting services (Github, Bitbucket, Gitlab etc) display the contents of the the README's, directly when browsing through source directories. This applies to our module directories as well.
+
+
+### How?
+
+Use markdown syntax for creating simple tables.
+```markdown
+`npm run ...` | Description
+---|---
+task | What it does as a plain human readable description.
+```
+
+An example:
+
+`npm run ...` | Description
+---|---
+`build` | Compile, bundle and minify all tag files.
+`build:tags` | Compile and bundle all tag files to `dist/tags.js`.
+`build:min` | Minify tags bundle to `dist/tags.min.js` plus sourcemap.
+`start` | Starts a server on `http://localhost:3000`.
+`test` | Run tests.
