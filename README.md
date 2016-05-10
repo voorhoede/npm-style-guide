@@ -246,19 +246,20 @@ An example:
 `build:js` | Compile, bundle and minify all JS files to `dist/index.js`.
 `start` | Starts a server on `http://localhost:3000`.
 `test` | Run all unit and end-to-end tests.
-=======
+
+[↑ back to Table of Contents](#table-of-contents)
 
 ## Avoid shorthand command flags
 
 npm and npm modules with a command-line interface support different options using fully written out and / or shorthand flags. For instance, instead of `npm install --save-dev` you can use the shorter `npm i -D`. For `npm test` you can use simply `npm t`. But `npm start` is not the same as `npm s`, as that's an alias for `npm search`. So while you can use these shorthands in your daily routine, you should avoid them in scripts and documentation shared with other developers.  
 
-## Why?
+### Why?
 
 * Shorthand flags can only be understood by developers who know the modules and options well.
 * Fully written out command options help in writing self documented scripts.
 * Fully written out command options make scripts more accessible to other developers.
 
-## How?
+### How?
 
 Always prefer fully written command flags over shorthand. Example using [uglifyjs](https://www.npmjs.com/package/uglify-js):
 
