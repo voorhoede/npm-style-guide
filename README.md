@@ -161,12 +161,10 @@ Use npm modules with node that mimic the same tasks but are system agnostic. Som
 
 * Documentation formalises the API.
 
-* README.md is the de facto standard filename for documentation to be read first. Code repository hosting services (Github, Bitbucket, Gitlab etc) display the contents of the the README's, directly when browsing through source directories. This applies to our module directories as well.
-
-
 ### How?
 
-Use markdown syntax for creating simple tables.
+Document your script API in the project's README.md or CONTRIBUTING.md as those are the first places contributors will look.
+Describe what each task using a simple table:
 ```markdown
 `npm run ...` | Description
 ---|---
@@ -177,8 +175,8 @@ An example:
 
 `npm run ...` | Description
 ---|---
-`build` | Compile, bundle and minify all tag files.
-`build:tags` | Compile and bundle all tag files to `dist/tags.js`.
-`build:min` | Minify tags bundle to `dist/tags.min.js` plus sourcemap.
+`build` | Compile, bundle and minify all CSS and JS files..
+`build:css` | Compile, autoprefix and minify all CSS files to `dist/index.css`.
+`build:js` | Compile, bundle and minify all JS files to `dist/index.js`.
 `start` | Starts a server on `http://localhost:3000`.
-`test` | Run tests.
+`test` | Run all unit and end-to-end tests.
