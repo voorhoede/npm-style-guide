@@ -107,7 +107,7 @@ npm install --save-dev grunt-cli grunt
 and use in `package.json`:
 ```json
 "scripts": {
-  "icons": "grunt grunticons"
+  "icons": "grunt grunticon"
 }
 ```
 ```bash
@@ -143,30 +143,39 @@ Bundle your tasks with a prefix so you can execute them all at once.
 
 * Bundling helps keeping your tasks organized.
 * Tasks grouped by prefix can be easily executed with one command.
-* Your script API remains unchanged when tasks are added, removed or renamed.
+* Your high-level script API remains unchanged when tasks are added, removed or renamed.
 
 ### How?
 
 `package.json`:
-``` js
-/* recommended */
+```javascript
+/* recommended: group related tasks by prefix */
 scripts: {
-    "build": "npm-run-all build:*",
-	"build:cleanDistDir": "rimraf dist/",
-	"build:optimizeSVG": "svgo --folder svg/",
-	"build:generatePNGFallback": "svg2png svg/*.svg"
+    "test": "npm run eslint && npm run unit && npm run e2e",
+	"test:eslint": "eslint src/**/*.js",
+	"test:unit": "tape --require dist/index.js src/**/*.test.js",
+	"test:e2e": "karma start test/config.js"
 }
 
 /* avoid */
 scripts: {
-    "build": "npm run cleanDistDir && npm run optimizeSvg && npm run generatePNGFallback",
-	"cleanDistDir": "rimraf dist/",
-	"optimizeSvg": "svgo --folder svg/ --output dist/svg",
-	"generatePNGFallback": "svg2png svg/*.svg --output dist/png"
+	"eslint": "eslint src/**/*.js",
+	"tape": "tape --require dist/index.js src/**/*.test.js",
+	"karma": "karma start test/config.js",
 }
 ```
 
-To run all scripts prefixed with `build:` use [npm-run-all](https://www.npmjs.com/package/npm-run-all). A CLI tool to run multiple npm-scripts in parallel or sequential / serial.
+Bundled scripts can be executed (in parallel or in sequence) using [npm-run-all](https://www.npmjs.com/package/npm-run-all):
+
+```javascript
+/* recommended: use `npm-run-all` to run all bundled tasks */
+scripts: {
+    "test": "npm-run-all test:*",
+	"test:eslint": "eslint src/**/*.js",
+	"test:unit": "tape --require dist/index.js src/**/*.test.js",
+	"test:e2e": "karma start test/config.js"
+}
+```
 
 [↑ back to Table of Contents](#table-of-contents)
 
