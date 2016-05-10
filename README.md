@@ -58,6 +58,7 @@ nvm copy-packages <previous-version>
 
 [↑ back to Table of Contents](#table-of-contents)
 
+
 ## Configure your npm personal info
 
 ### Why?
@@ -77,6 +78,7 @@ You can use `cat ~/.npmrc` to check your current definitions.
 
 [↑ back to Table of Contents](#table-of-contents)
 
+
 ## Use `save exact` option
 
 ### Why?
@@ -90,6 +92,7 @@ npm config set save-exact
 ```
 
 [↑ back to Table of Contents](#table-of-contents)
+
 
 ## Specify engines on `package.json`
 
@@ -141,6 +144,25 @@ npm install -g grunt-cli grunt
 [↑ back to Table of Contents](#table-of-contents)
 
 
+## Use npm modules for system tasks
+
+### Why?
+
+When you use system specific commands like `rm -rf` or `&&`, you are locking your tasks to your current operating system. If you want to make your scripts work everywhere think about Windows developers also.
+
+### How?
+
+Use npm modules with node that mimic the same tasks but are system agnostic. Some examples:
+
+* create directory (`mkdir` / `mkdir -p`) -> [`mkdirp`](https://www.npmjs.com/package/mkdirp)
+* remove files and directories (`rm ...`) -> [`rimraf`](https://www.npmjs.com/package/rimraf)
+* copy files (`cp ...`) -> [`ncp`](https://www.npmjs.com/package/ncp)
+* run multiple tasks in sequence (`... && ...`) or in parallel (`... & ...`) -> [`npm-run-all`](https://www.npmjs.com/package/npm-run-all)
+* set environment variable (`ENV_VAR = ...`) -> [`cross-env`](https://www.npmjs.com/package/cross-env)
+
+[↑ back to Table of Contents](#table-of-contents)
+
+
 ## Avoid shorthand command flags
 
 npm and npm modules with a command-line interface support different options using fully written out and / or shorthand flags. For instance, instead of `npm install --save-dev` you can use the shorter `npm i -D`. For `npm test` you can use simply `npm t`. But `npm start` is not the same as `npm s`, as that's an alias for `npm search`. So while you can use these shorthands in your daily routine, you should avoid them in scripts and documentation shared with other developers.  
@@ -164,25 +186,6 @@ uglify index.js --compress --mangle --reserved '$' --output index.min.js
 # avoid
 uglifyjs index.js -c -m -r '$' -o index.min.js
 ```
-
-[↑ back to Table of Contents](#table-of-contents)
-
-
-## Use npm modules for system tasks
-
-### Why?
-
-When you use system specific commands like `rm -rf` or `&&`, you are locking your tasks to your current operating system. If you want to make your scripts work everywhere think about Windows developers also.
-
-### How?
-
-Use npm modules with node that mimic the same tasks but are system agnostic. Some examples:
-
-* create directory (`mkdir` / `mkdir -p`) -> [`mkdirp`](https://www.npmjs.com/package/mkdirp)
-* remove files and directories (`rm ...`) -> [`rimraf`](https://www.npmjs.com/package/rimraf)
-* copy files (`cp ...`) -> [`ncp`](https://www.npmjs.com/package/ncp)
-* run multiple tasks in sequence (`... && ...`) or in parallel (`... & ...`) -> [`npm-run-all`](https://www.npmjs.com/package/npm-run-all)
-* set environment variable (`ENV_VAR = ...`) -> [`cross-env`](https://www.npmjs.com/package/cross-env)
 
 [↑ back to Table of Contents](#table-of-contents)
 
