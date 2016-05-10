@@ -18,6 +18,7 @@ This guide provides a set of rules to better manage, test and build your [npm](h
 * [Use `save exact` option](#use-save-exact-option)
 * [Avoid installing modules globally](#avoid-installing-modules-globally)
 * [Write atomic tasks](#write-atomic-tasks)
+* [Group related tasks by prefix](#group-related-tasks-by-prefix)
 * [Use npm modules for system tasks](#use-npm-modules-for-system-tasks)
 * [Avoid shorthand command flags](#avoid-shorthand-command-flags)
 
@@ -107,7 +108,7 @@ npm install --save-dev grunt-cli grunt
 and use in `package.json`:
 ```json
 "scripts": {
-  "icons": "grunt grunticons"
+  "icons": "grunt grunticon"
 }
 ```
 ```bash
@@ -132,6 +133,50 @@ Each task should be only responsible for one action.
 
 Separate each step of the task to an individual task. For example a "generate icon" task can be split into atomic tasks like "clean directory", "optimize SVGs", "generate PNGs" and "generate data-uris for SVGs".
 
+
+[↑ back to Table of Contents](#table-of-contents)
+
+## Group related tasks by prefix 
+
+Bundle your tasks with a prefix so you can execute them all at once.
+
+### Why?
+
+* Bundling helps keeping your tasks organized.
+* Tasks grouped by prefix can be easily executed with one command.
+* Your high-level script API remains unchanged when tasks are added, removed or renamed.
+
+### How?
+
+`package.json`:
+```javascript
+/* recommended: group related tasks by prefix */
+scripts: {
+    "test": "npm run eslint && npm run unit && npm run e2e",
+	"test:eslint": "eslint src/**/*.js",
+	"test:unit": "tape --require dist/index.js src/**/*.test.js",
+	"test:e2e": "karma start test/config.js"
+}
+
+/* avoid */
+scripts: {
+	"eslint": "eslint src/**/*.js",
+	"tape": "tape --require dist/index.js src/**/*.test.js",
+	"karma": "karma start test/config.js",
+}
+```
+
+Bundled scripts can be executed (in parallel or in sequence) using [npm-run-all](https://www.npmjs.com/package/npm-run-all):
+
+```javascript
+/* recommended: use `npm-run-all` to run all bundled tasks */
+scripts: {
+    "test": "npm-run-all test:*",
+	"test:eslint": "eslint src/**/*.js",
+	"test:unit": "tape --require dist/index.js src/**/*.test.js",
+	"test:e2e": "karma start test/config.js"
+}
+```
 
 [↑ back to Table of Contents](#table-of-contents)
 
