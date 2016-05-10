@@ -92,7 +92,7 @@ npm config set save-exact
 
 ### Why?
 
-Specifying engine versions on `package.json` for your module warns the user if he is not using a supported version. This is specially important for ensuring npm@3 flat tree dependency on Windows, or ES2015 features that your tasks require on node.
+Specifying engine versions on your `package.json` module, warns the user if he is not using a supported version. This is specially important for ensuring npm@3 flat tree dependency on Windows, or ES2015 features that your tasks require on node.
 
 ### How?
 
