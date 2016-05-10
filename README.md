@@ -92,7 +92,7 @@ npm config set save-exact
 
 ### Why?
 
-Specifing minimal engines version for your module warns the user if he is not using a supported version. This is specially important for ensuring npm3 flat tree dependecy on Windows, or es2015 features that your tasks require on node.
+Specifying engine versions for your module warns the user if he is not using a supported version. This is specially important for ensuring npm@3 flat tree dependency on Windows, or ES2015 features that your tasks require on node.
 
 ### How?
 
