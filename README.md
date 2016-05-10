@@ -21,6 +21,7 @@ This guide provides a set of rules to better manage, test and build your [npm](h
 * [Write atomic tasks](#write-atomic-tasks)
 * [Group related tasks by prefix](#group-related-tasks-by-prefix)
 * [Use npm modules for system tasks](#use-npm-modules-for-system-tasks)
+* [Document your script API](#document-your-script-API)
 * [Avoid shorthand command flags](#avoid-shorthand-command-flags)
 
 
@@ -156,7 +157,7 @@ Separate each step of the task to an individual task. For example a "generate ic
 
 [↑ back to Table of Contents](#table-of-contents)
 
-## Group related tasks by prefix 
+## Group related tasks by prefix
 
 Bundle your tasks with a prefix so you can execute them all at once.
 
@@ -204,7 +205,7 @@ scripts: {
 
 ### Why?
 
-When you use system specific commands like `rm -rf` or `&&`, you are locking your tasks to your current operating system. If you want to make your scripts work everwhere think about Windows developers also.
+When you use system specific commands like `rm -rf` or `&&`, you are locking your tasks to your current operating system. If you want to make your scripts work everywhere think about Windows developers also.
 
 ### How?
 
@@ -217,6 +218,35 @@ Use npm modules with node that mimic the same tasks but are system agnostic. Som
 * set environment variable (`ENV_VAR = ...`) -> [`cross-env`](https://www.npmjs.com/package/cross-env)
 
 [↑ back to Table of Contents](#table-of-contents)
+
+## Document your script API
+
+### Why?
+
+* Documentation provides developers with a high level overview to the script, without the need to go through all its code. This makes a module more accessible and easier to use.
+
+* Documentation formalises the API.
+
+### How?
+
+Document your script API in the project's README.md or CONTRIBUTING.md as those are the first places contributors will look.
+Describe what each task using a simple table:
+```markdown
+`npm run ...` | Description
+---|---
+task | What it does as a plain human readable description.
+```
+
+An example:
+
+`npm run ...` | Description
+---|---
+`build` | Compile, bundle and minify all CSS and JS files..
+`build:css` | Compile, autoprefix and minify all CSS files to `dist/index.css`.
+`build:js` | Compile, bundle and minify all JS files to `dist/index.js`.
+`start` | Starts a server on `http://localhost:3000`.
+`test` | Run all unit and end-to-end tests.
+=======
 
 ## Avoid shorthand command flags
 
