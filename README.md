@@ -22,7 +22,7 @@ This guide provides a set of rules to better manage, test and build your [NPM](h
 * [Use npm modules for system tasks](#use-npm-modules-for-system-tasks)
 
 
-## Use nvm to manage node versions 
+## Use nvm to manage node versions
 
 ### Why?
 
@@ -45,7 +45,7 @@ If everything goes well, you can now install a specific node version.
 nvm install stable
 nvm install vX.Y.Z
 nvm alias default stable
-``` 
+```
 
 It’s also easy when updating a newer version, copying your existing global modules.
 
@@ -55,7 +55,7 @@ nvm copy-packages <previous-version>
 
 [↑ back to Table of Contents](#table-of-contents)
 
-## Configure your npm personal info 
+## Configure your npm personal info
 
 ### Why?
 
@@ -121,7 +121,7 @@ More about [**npm scripts**](https://docs.npmjs.com/misc/scripts).
 
 ## Write atomic tasks
 
-Each task should be only responsible for one action. 
+Each task should be only responsible for one action.
 
 ### Why?
 
@@ -139,11 +139,17 @@ Separate each step of the task to an individual task. For example a "generate ic
 
 ### Why?
 
-Makes it easier to any developer if the names of the tasks are consistent between projects.
+Makes it easier to any developer if the names of the tasks are consistent between projects with a predictable script API.
 
 ### How?
 
-Use names like `build`, `test`, `start` and `watch`.
+Script names like `start` and `test` are default from npm. The first one is the default starting point for any module/project while `test` runs all related tests that ensures quality.
+Script names like `build`, `deploy` or `watch` even thou they are not default from npm,
+are very wildly used by the community.
+
+* **npm run build** - is used to create all the assets necessary for the project to run
+* **npm run watch** - is used to watch files for changes and run the build task
+* **npm run deploy** - is used to create a deployable of your solution (it can even deploy it)
 
 
 [↑ back to Table of Contents](#table-of-contents)
@@ -152,7 +158,7 @@ Use names like `build`, `test`, `start` and `watch`.
 
 ### Why?
 
-When you use system specific commands like `rm -rf` or `&&`, you are locking your tasks to your current operating system. If you want to make your scripts work everwhere think about Windows developers also.
+When you use system specific commands like `rm -rf` or `&&`, you are locking your tasks to your current operating system. If you want to make your scripts work everywhere think about Windows developers also.
 
 ### How?
 
