@@ -132,27 +132,54 @@ Each task should be only responsible for one action.
 
 Separate each step of the task to an individual task. For example a "generate icon" task can be split into atomic tasks like "clean directory", "optimize SVGs", "generate PNGs" and "generate data-uris for SVGs".
 
-
 [↑ back to Table of Contents](#table-of-contents)
+
 
 ## Use standard script names
 
+npm lets you define custom scripts. You can give these scripts any name you like, but you should stick to standard names when you can.
+
 ### Why?
 
-Makes it easier to any developer if the names of the tasks are consistent between projects with a predictable script API.
+Using standard script names creates a predictable script API, which makes your project easier to use by other developers. When used consistently between projects a user doesn't even need to read the documentation or `package.json` to know which scripts are available.
 
 ### How?
 
-Script names like `start` and `test` are default from npm. The first one is the default starting point for any module/project while `test` runs all related tests that ensures quality.
-Script names like `build`, `deploy` or `watch` even thou they are not default from npm,
-are very wildly used by the community.
+`npm start` and `npm test` are predefined aliases for custom scripts. In addition use of `build`, `deploy` and `watch` are widely spread within the developer community. You should use these script names as follows:
 
-* **npm run build** - is used to create all the assets necessary for the project to run
-* **npm run watch** - is used to watch files for changes and run the build task
-* **npm run deploy** - is used to create a deployable of your solution (it can even deploy it)
+* **`npm run build`** to create a distribution of your project (mostly for production).
+* **`npm run deploy`** to put your project on a host environment.
+* **`npm start`** (alias for `npm run start`) to start a web server (defaults to `node server.js`).
+* **`npm test`** (alias for `npm run test`) to run project's entire test suite.
+* **`npm run watch`** to run other scripts on files changes.
 
+In `package.json`:
+```javascript
+/* recommended: standard script names */
+{
+  "scripts": {
+    "build": "...",
+    "deploy": "...",
+    "start": "...",
+    "test": "...",
+    "watch": "..."
+  }
+}
+
+/* avoid: */
+{
+  "scripts": {
+    "bundle": "...",
+    "upload": "...",
+    "serve": "...",
+    "check": "...",
+    "watcher": "..."
+  }
+}
+```
 
 [↑ back to Table of Contents](#table-of-contents)
+
 
 ## Use npm modules for system tasks
 
