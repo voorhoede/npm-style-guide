@@ -18,6 +18,8 @@ This guide provides a set of rules to better manage, test and build your [npm](h
 * [Use `save exact` option](#use-save-exact-option)
 * [Specify engines on `package.json`](#specify-engines-on-packagejson)
 * [Avoid installing modules globally](#avoid-installing-modules-globally)
+* [Use standard script names](#use-standard-script-names)
+* [Write atomic tasks](#write-atomic-tasks)
 * [Use npm modules for system tasks](#use-npm-modules-for-system-tasks)
 * [Avoid shorthand command flags](#avoid-shorthand-command-flags)
 * [Write atomic tasks](#write-atomic-tasks)
@@ -189,6 +191,51 @@ uglifyjs index.js -c -m -r '$' -o index.min.js
 
 [↑ back to Table of Contents](#table-of-contents)
 
+## Use standard script names
+
+npm lets you define custom scripts. You can give these scripts any name you like, but you should stick to standard names when you can.
+
+### Why?
+
+Using standard script names creates a predictable script API, which makes your project easier to use by other developers. When used consistently between projects a user doesn't even need to read the documentation or `package.json` to know which scripts are available.
+
+### How?
+
+`npm start` and `npm test` are predefined aliases for custom scripts. In addition use of `build`, `deploy` and `watch` are widely spread within the developer community. You should use these script names as follows:
+
+* **`npm run build`** to create a distribution of your project (mostly for production).
+* **`npm run deploy`** to put your project on a host environment.
+* **`npm start`** (alias for `npm run start`) to start a web server (defaults to `node server.js`).
+* **`npm test`** (alias for `npm run test`) to run project's entire test suite.
+* **`npm run watch`** to run other scripts on files changes.
+
+In `package.json`:
+```javascript
+/* recommended: standard script names */
+{
+  "scripts": {
+    "build": "...",
+    "deploy": "...",
+    "start": "...",
+    "test": "...",
+    "watch": "..."
+  }
+}
+
+/* avoid: */
+{
+  "scripts": {
+    "bundle": "...",
+    "upload": "...",
+    "serve": "...",
+    "check": "...",
+    "watcher": "..."
+  }
+}
+```
+
+[↑ back to Table of Contents](#table-of-contents)
+
 
 ## Write atomic tasks
 
@@ -202,6 +249,15 @@ Each task should be only responsible for one action.
 ### How?
 
 Separate each step of the task to an individual task. For example a "generate icon" task can be split into atomic tasks like "clean directory", "optimize SVGs", "generate PNGs" and "generate data-uris for SVGs".
+
+[↑ back to Table of Contents](#table-of-contents)
+
+
+## Use npm modules for system tasks
+
+### Why?
+
+When you use system specific commands like `rm -rf` or `&&`, you are locking your tasks to your current operating system. If you want to make your scripts work everywhere think about Windows developers also.
 
 [↑ back to Table of Contents](#table-of-contents)
 
