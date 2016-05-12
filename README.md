@@ -4,12 +4,12 @@ Opinionated ​*npm Style Guide*​ for teams by [De Voorhoede](https://twitter.
 
 ## Purpose
 
-This guide provides a set of rules to better manage, test and build your [npm](https://npmjs.org) modules and project tasks runners. It should make them
+This guide provides a set of rules to better manage, test and build your [npm](https://npmjs.org) modules and project scripts. It should make them
 
 * easier for a new developer to pick up
 * reduce friction with different environment configurations
 * have a predictable api
-* easier to add new tasks
+* easier to add new scripts
 
 ## Table of Contents
 
@@ -19,11 +19,10 @@ This guide provides a set of rules to better manage, test and build your [npm](h
 * [Specify engines on `package.json`](#specify-engines-on-packagejson)
 * [Avoid installing modules globally](#avoid-installing-modules-globally)
 * [Use standard script names](#use-standard-script-names)
-* [Write atomic tasks](#write-atomic-tasks)
+* [Write atomic scripts](#write-atomic-scripts)
 * [Use npm modules for system tasks](#use-npm-modules-for-system-tasks)
 * [Avoid shorthand command flags](#avoid-shorthand-command-flags)
-* [Write atomic tasks](#write-atomic-tasks)
-* [Group related tasks by prefix](#group-related-tasks-by-prefix)
+* [Group related scripts by prefix](#group-related-scripts-by-prefix)
 * [Document your script API](#document-your-script-api)
 
 
@@ -100,7 +99,7 @@ npm config set save-exact
 
 ### Why?
 
-Specifying engine versions for your module, warns the user if he is not using a supported version. This is specially important for ensuring npm@3 flat tree dependency on Windows, or ES2015 features that your tasks require on node.
+Specifying engine versions for your module, warns the user if he is not using a supported version. This is specially important for ensuring npm@3 flat tree dependency on Windows, or ES2015 features that your scripts require on node.
 
 ### How?
 
@@ -159,7 +158,7 @@ Use npm modules with node that mimic the same tasks but are system agnostic. Som
 * create directory (`mkdir` / `mkdir -p`) -> [`mkdirp`](https://www.npmjs.com/package/mkdirp)
 * remove files and directories (`rm ...`) -> [`rimraf`](https://www.npmjs.com/package/rimraf)
 * copy files (`cp ...`) -> [`ncp`](https://www.npmjs.com/package/ncp)
-* run multiple tasks in sequence (`... && ...`) or in parallel (`... & ...`) -> [`npm-run-all`](https://www.npmjs.com/package/npm-run-all)
+* run multiple scripts in sequence (`... && ...`) or in parallel (`... & ...`) -> [`npm-run-all`](https://www.npmjs.com/package/npm-run-all)
 * set environment variable (`ENV_VAR = ...`) -> [`cross-env`](https://www.npmjs.com/package/cross-env)
 
 [↑ back to Table of Contents](#table-of-contents)
@@ -169,13 +168,13 @@ Use npm modules with node that mimic the same tasks but are system agnostic. Som
 
 npm and npm modules with a command-line interface support different options using fully written out and / or shorthand flags. For instance, instead of `npm install --save-dev` you can use the shorter `npm i -D`. For `npm test` you can use simply `npm t`. But `npm start` is not the same as `npm s`, as that's an alias for `npm search`. So while you can use these shorthands in your daily routine, you should avoid them in scripts and documentation shared with other developers.  
 
-## Why?
+### Why?
 
 * Shorthand flags can only be understood by developers who know the modules and options well.
 * Fully written out command options help in writing self documented scripts.
 * Fully written out command options make scripts more accessible to other developers.
 
-## How?
+### How?
 
 Always prefer fully written command flags over shorthand. Example using [uglifyjs](https://www.npmjs.com/package/uglify-js):
 
@@ -237,46 +236,36 @@ In `package.json`:
 [↑ back to Table of Contents](#table-of-contents)
 
 
-## Write atomic tasks
+## Write atomic scripts
 
-Each task should be only responsible for one action.
+Each script should be only responsible for one action.
 
 ### Why?
 
-* Atomic tasks are easy to read and understand.
-* Atomic tasks are easy to reuse.
+* Atomic scripts are easy to read and understand.
+* Atomic scripts are easy to reuse.
 
 ### How?
 
-Separate each step of the task to an individual task. For example a "generate icon" task can be split into atomic tasks like "clean directory", "optimize SVGs", "generate PNGs" and "generate data-uris for SVGs".
+Separate each step of the script to an individual script. For example a "generate icon" script can be split into atomic script like "clean directory", "optimize SVGs", "generate PNGs" and "generate data-uris for SVGs".
 
 [↑ back to Table of Contents](#table-of-contents)
 
+## Group related scripts by prefix
 
-## Use npm modules for system tasks
-
-### Why?
-
-When you use system specific commands like `rm -rf` or `&&`, you are locking your tasks to your current operating system. If you want to make your scripts work everywhere think about Windows developers also.
-
-[↑ back to Table of Contents](#table-of-contents)
-
-
-## Group related tasks by prefix
-
-Bundle your tasks with a prefix so you can execute them all at once.
+Bundle your scripts with a prefix so you can execute them all at once.
 
 ### Why?
 
-* Bundling helps keeping your tasks organized.
+* Bundling helps keeping your scripts organized.
 * Tasks grouped by prefix can be easily executed with one command.
-* Your high-level script API remains unchanged when tasks are added, removed or renamed.
+* Your high-level script API remains unchanged when scripts are added, removed or renamed.
 
 ### How?
 
 In `package.json`:
 ```javascript
-/* recommended: group related tasks by prefix */
+/* recommended: group related scripts by prefix */
 scripts: {
 	"test": "npm run eslint && npm run unit && npm run e2e",
 	"test:eslint": "eslint src/**/*.js",
@@ -295,7 +284,7 @@ scripts: {
 Bundled scripts can be executed (in parallel or in sequence) using [npm-run-all](https://www.npmjs.com/package/npm-run-all):
 
 ```javascript
-/* recommended: use `npm-run-all` to run all bundled tasks */
+/* recommended: use `npm-run-all` to run all bundled scripts */
 scripts: {
 	"test": "npm-run-all test:*",
 	"test:eslint": "eslint src/**/*.js",
