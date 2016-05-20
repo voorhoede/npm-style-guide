@@ -267,7 +267,7 @@ In `package.json`:
 ```javascript
 /* recommended: group related scripts by prefix */
 scripts: {
-	"test": "npm run eslint && npm run unit && npm run e2e",
+	"test": "npm run test:eslint && npm run test:unit && npm run test:e2e",
 	"test:eslint": "eslint src/**/*.js",
 	"test:unit": "tape --require dist/index.js src/**/*.test.js",
 	"test:e2e": "karma start test/config.js"
