@@ -2,6 +2,8 @@
 
 Opinionated ​*npm Style Guide*​ for teams by [De Voorhoede](https://twitter.com/devoorhoede).
 
+[![npm style guide](https://img.shields.io/badge/style%20guide-npm-5ed9c7.svg)](https://github.com/voorhoede/npm-style-guide)
+
 ## Purpose
 
 This guide provides a set of rules to better manage, test and build your [npm](https://npmjs.org) modules and project scripts. It should make them
